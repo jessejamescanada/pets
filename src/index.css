@@ -75,14 +75,19 @@ button {
 .removeIcon {
   cursor: pointer;
   position: absolute;
-  top: -3%;
-  right: -2%;
+  top: 1%;
+  right: 4%;
+}
+@media (max-width:500px) {
+  .removeIcon{
+    right: 12%;
+  }
 }
 .editIcon {
   cursor: pointer;
   position: absolute;
-  top: -3.4%;
-  right: 20px;
+  top: 1%;
+  right: 10px;
 }
 
 .pageContainer,
@@ -264,7 +269,7 @@ button {
 }
 
 .socialLogin {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -289,7 +294,7 @@ button {
 }
 
 .registerLink {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   color: #00cc66;
   font-weight: 600;
   text-align: center;
@@ -340,7 +345,7 @@ button {
   color: #ffffff;
   position: absolute;
   top: 70px;
-  left: 0;
+  left: 25%;
   font-weight: 600;
   max-width: 90%;
   font-size: 1.25rem;
@@ -350,6 +355,12 @@ button {
 @media (min-width: 1024px) {
   .swiperSlideText {
     font-size: 1.75rem;
+  }
+}
+@media (max-width: 500px) {
+  .swiperSlideText{
+    left: 2px;
+    top: 2px;
   }
 }
 
@@ -374,8 +385,20 @@ button {
   display: flex;
   justify-content: space-between;
 }
+@media(max-width: 500px){
+  .exploreCategories{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+}
 .exploreCategories a {
   width: 48%;
+}
+@media(max-width: 500px){
+  .exploreCategories a{
+    width: 80%;
+  }
 }
 
 .exploreCategoryImg {
@@ -385,11 +408,12 @@ button {
   border-radius: 1.5rem;
   object-fit: cover;
   margin: 0 auto;
+  padding: 0 4px;
 }
 
 .exploreCategoryName {
   font-weight: 500;
-  text-align: left;
+  text-align: center;
 }
 
 .category {
@@ -398,6 +422,12 @@ button {
 
 .categoryListings {
   padding: 0;
+  display: flex;
+}
+@media (max-width:500px) {
+  .categoryListings{
+    flex-direction: column;
+  }
 }
 
 .categoryListing {
@@ -406,6 +436,9 @@ button {
   align-items: center;
   margin-bottom: 1rem;
   position: relative;
+}
+.categoryListing:hover{
+  background-color: #e9e9e9;
 }
 
 .categoryListingLink {
@@ -420,13 +453,14 @@ button {
 }
 @media (min-width: 1024px) {
   .categoryListingImg {
-    width: 19%;
+    width: 50%;
     height: 217px;
   }
 }
 
 .categoryListingDetails {
   width: 65%;
+  padding-left: 10px;
 }
 @media (min-width: 1024px) {
   .categoryListingDetails {
@@ -484,6 +518,27 @@ button {
 
 .listingDetails {
   margin-bottom: 10rem;
+}
+
+.imgDisplayContainer{
+  margin-bottom: 100px;
+}
+
+.imgDisplay{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.imgDisplayImgs{
+  height: 500px;
+  width: auto;
+}
+@media (max-width:500px) {
+  .imgDisplayImgs{
+    height: auto;
+    width: 100%;
+  }
 }
 
 .shareIconDiv {
@@ -625,7 +680,7 @@ button {
   font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: #00cc66;
+  background-color: #ffbe74fc;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
 }
@@ -643,7 +698,7 @@ button {
 .changePersonalDetails {
   cursor: pointer;
   font-weight: 600;
-  color: #00cc66;
+  color: #ffbe74fc;
 }
 
 .profileCard {
@@ -700,6 +755,9 @@ button {
   justify-content: space-between;
   align-items: center;
 }
+.createListing:hover{
+  background-color: rgb(224, 224, 224);
+}
 
 .listingText {
   margin-top: 3rem;
@@ -740,6 +798,11 @@ button {
 .formButtonActive {
   background-color: #00cc66;
   color: #ffffff;
+}
+@media (max-width:500px) {
+  .formButtonActive{
+    width: 30%;
+  }
 }
 
 .flex {
@@ -800,6 +863,7 @@ button {
   padding: 0.5rem 0.75rem;
   border-radius: 1rem;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .createListingButton {

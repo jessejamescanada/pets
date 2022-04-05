@@ -2,15 +2,16 @@ import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { doc, updateDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import {db} from '../firebase.config'
 import {v4 as uuidv4} from 'uuid'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import Spinner from '../components/Spinner'
 import { toast } from 'react-toastify';
 
-function CreateListing() {
+function EditListing() {
     const [loading, setLoading] = useState(false)
+    const [listing, setListing] = useState(false)
     const [formData, setFormData] = useState({
         type: 'dog',
         name: '',
@@ -25,8 +26,36 @@ function CreateListing() {
 
     const auth = getAuth()
     const navigate = useNavigate()
+    const params = useParams()
     const isMounted = useRef(true)
+    
+    // redirect if listing is not users
+    useEffect(() => {
+        if(listing && listing.userRef !== auth.currentUser.uid) {
+            toast.error('You cannot edit')
+            navigate('/')
+        }
+    })
 
+    // Fetch listing to edit
+    useEffect(() => {
+        setLoading(true)
+        const fetchListing = async () => {
+            const docRef = doc(db, 'pets', params.listingId)
+            const docSnap = await getDoc(docRef)
+            if(docSnap.exists()) {
+                setListing(docSnap.data())
+                setFormData({...docSnap.data() })
+                setLoading(false)
+            }else{
+                navigate('/')
+                toast.error('Listing does not exits')
+            }
+        }
+        fetchListing()
+    }, [navigate, params.listingId])
+
+    // Sets userRef to logged in user
     useEffect(() => {
         if(isMounted){
             onAuthStateChanged(auth, (user) => {
@@ -103,7 +132,9 @@ function CreateListing() {
         }
         delete formDataCopy.images
 
-        const docRef = await addDoc(collection(db, 'pets'), formDataCopy)
+        // update listing
+        const docRef = doc(db, 'pets', params.listingId)
+        await updateDoc(docRef, formDataCopy)
 
         setLoading(false)
         toast.success('Your pet has been added!')
@@ -133,11 +164,11 @@ function CreateListing() {
   return (
     <div className='profile'>
         <header>
-            <p className="pageHeader">Create a post for your pet!</p>
+            <p className="pageHeader">Edit your pet!</p>
         </header>
         <main>
             <form onSubmit={onSubmit}>
-                <label className="formLabel">Cat / Dog / Other</label>
+                <label className="formLabel">Cat / Dog</label>
                 <div className="formButtons">
                     <button type="button" className={type === 'dog' ? 'formButtonActive' : 'formButton' } 
                     id='type'
@@ -213,14 +244,13 @@ function CreateListing() {
                 <label className="formLabel">Biography</label>
                 <textarea name="bio" 
                 id="bio" 
-                cols="30" rows="5" 
+                cols="30" rows="10" 
                 className='formInputName' 
                 value={bio} 
                 onChange={onMutate}>
-
                 </textarea>
             
-                <label className="formLabel">Images (Max of 6)</label>
+                <label className="formLabel">Images</label>
                 <input type="file"
                 className='formInputFile'
                 id='images'
@@ -232,7 +262,7 @@ function CreateListing() {
                 />
         <button className="primaryButton createListingButton"
             type='submit'>
-                Post Your Pet!
+                Edit Your Post
         </button>
         </form>
 
@@ -241,7 +271,8 @@ function CreateListing() {
   )
 }
 
-export default CreateListing
+export default EditListing
 
 
 
+// on CREATE LISTING You can now add type of 'OTHER'. You now need to go to Explore and create a new category for other and have it load like it does for cats and dogs

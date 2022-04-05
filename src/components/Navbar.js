@@ -26,9 +26,9 @@ function Navbar() {
                     <PersonOutlineIcon fill={pathMatchRoute('/profile') ? '#2c2c2c' : '#8f8f8f'} width='36px' height='36px'/>
                     <p className={pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListName'}>Profile</p>
                 </li>
-                <li className="navbarListItem" onClick={() => navigate('/random')}>
-                    <OfferIcon fill={pathMatchRoute('/random') ? '#2c2c2c' : '#8f8f8f'} width='36px' height='36px'/>
-                    <p className={pathMatchRoute('/random') ? 'navbarListItemNameActive' : 'navbarListName'}>Random</p>
+                <li className="navbarListItem" onClick={() => navigate('/create-listing')}>
+                    <OfferIcon fill={pathMatchRoute('/create-listing') ? '#2c2c2c' : '#8f8f8f'} width='36px' height='36px'/>
+                    <p className={pathMatchRoute('/create-listing') ? 'navbarListItemNameActive' : 'navbarListName'}>Post</p>
                 </li>
             </ul>
         </nav>

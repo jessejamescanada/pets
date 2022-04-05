@@ -47,7 +47,7 @@ function Signin() {
         <div className="pageContainer">
             <header>
                 <p className="pageHeader">
-                    Welcome Back!
+                    Please Sign In
                 </p>
             </header>
             <main>

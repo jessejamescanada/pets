@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Slider from '../components/Slider'
-import rentCategoryImage from '../assets/jpg/rentCategoryImage.jpg'
-import sellCategoryImage from '../assets/jpg/sellCategoryImage.jpg'
+import dogImage from '../assets/jpg/dogs.png'
+import catImage from '../assets/jpg/cats.png'
+import bunnyImage from '../assets/jpg/bunny.jpg'
 
 function Explore() {
   return (
@@ -16,16 +17,22 @@ function Explore() {
         <p className="exploreCategoryHeading">Categories</p>
         <div className="exploreCategories">
           <Link to='/category/dog'>
-            <img src={rentCategoryImage} alt="dogs"
+            <img src={dogImage} alt="dogs"
               className='exploreCategoryImg'
              />
              <p className="exploreCategoryName">Dogs</p>
           </Link>
           <Link to='/category/cat'>
-            <img src={sellCategoryImage} alt="cats"
+            <img src={catImage} alt="cats"
               className='exploreCategoryImg'
              />
              <p className="exploreCategoryName">Cats</p>
+          </Link>
+          <Link to='/category/other'>
+            <img src={bunnyImage} alt="others"
+              className='exploreCategoryImg'
+             />
+             <p className="exploreCategoryName">Other</p>
           </Link>
         </div>
       </main>
