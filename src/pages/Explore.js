@@ -10,6 +10,7 @@ function Explore() {
     <div className="explore">
       <header>
         <p className="pageHeader">Explore</p>
+        <Link to='/sign-in' className='registerLink'>Sign In</Link>
       </header>
       <main>
         <Slider />

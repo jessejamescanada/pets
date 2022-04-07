@@ -98,6 +98,12 @@ button {
 .explore {
   margin: 1rem;
 }
+.explore header{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
 @media (min-width: 1024px) {
   .pageContainer,
   .offers,
@@ -361,6 +367,9 @@ button {
   .swiperSlideText{
     left: 2px;
     top: 2px;
+  }
+  .registerLink{
+    margin-bottom: 0;
   }
 }
 
