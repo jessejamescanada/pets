@@ -226,7 +226,7 @@ function CreateListing() {
                 id='images'
                 onChange={onMutate}
                 max='6'
-                accept='.jpg,.png,.jpeg'
+                accept='.jpg,.png,.jpeg,.webp'
                 multiple
                 required
                 />
