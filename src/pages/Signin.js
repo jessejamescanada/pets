@@ -72,6 +72,7 @@ function Signin() {
                         onClick={() => setShowPassword((prevState) => !prevState)}
                         />
                     </div>
+                    <p>Sign in with <span className='bolded'>admin@a.com admin123</span></p>
                     <Link to='/forgot-password' className='forgotPasswordLink'>Forgot Password</Link>
                     <div className="signInBar">
                         <p className="signInText">Sign In</p>
